@@ -20,11 +20,16 @@ function FriendCard(props) {
           </li>
         </ul>
       </div>
-      <span onClick={() => props.removeFriend(props.id)} className="remove">
-        𝘅
+      {/* <span onClick={() => props.removeFriend(props.id)} className="remove"> */}
+      
+        <span onClick={() => props.selectFriend(props.id)}
+          className={props.curScore === 0 ? "style_prevu_kit style_prevu_kit_ex" : "style_prevu_kit"}
+        >
+          <img alt={props.friends} src={props.friends} />
       </span>
+      
     </div>
-  );
-}
-
-export default FriendCard;
+      );
+    }
+    
+    export default FriendCard;
