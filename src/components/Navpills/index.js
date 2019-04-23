@@ -1,6 +1,6 @@
 import React from "react";
 
-
+// create the score card at the top of the page
 const Navpills = props => (
     <div>
         <ul className="nav nav-pills nav-justified">
