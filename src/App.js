@@ -3,7 +3,7 @@ import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
-import Navpills from './components/Navpills/Navpills.js';
+import Navpills from './components/Navpills';
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
@@ -13,7 +13,8 @@ class App extends Component {
     curScore: 0,
     friends: friends,
     unselectedFriends: friends
-  };
+  }
+
   componentDidMount() {
   }
 
@@ -23,13 +24,13 @@ class App extends Component {
       [array[i], array[j]] = [array[j], array[i]];
     }
   }
-  selectFriend = friend => {
-    const findFriend = this.state.unselectedFriend.find(item => item.friend === friend);
+  selectFriend = name => {
+    const findFriend = this.state.unselectedFriends.find(item => item.name === name);
 
     if (findFriend === undefined) {
-      // failure to select a new dog
+      
       this.setState({
-        message: "You guessed incorrectly!",
+        message: "WRONG!",
         topScore: (this.state.curScore > this.state.topScore) ? this.state.curScore : this.state.topScore,
         curScore: 0,
         friends: friends,
@@ -37,11 +38,11 @@ class App extends Component {
       });
     }
     else {
-      // success to select a new dog
-      const newFriends = this.state.unselectedFriends.filter(item => item.friend !== friend);
+      
+      const newFriends = this.state.unselectedFriends.filter(item => item.name !== name);
 
       this.setState({
-        message: "You guessed correctly!",
+        message: "RIGHT!",
         curScore: this.state.curScore + 1,
         friends: friends,
         unselectedFriends: newFriends
@@ -51,11 +52,7 @@ class App extends Component {
     this.shuffleArray(friends);
   };
 
-
-
-
-
-
+  
 
   render() {
     return (
@@ -68,13 +65,15 @@ class App extends Component {
         <Title>Friends List</Title>
         {this.state.friends.map(friend => (
           <FriendCard
-            removeFriend={this.removeFriend}
+            
             id={friend.id}
             key={friend.id}
             name={friend.name}
             image={friend.image}
             occupation={friend.occupation}
             location={friend.location}
+            selectFriend={this.selectFriend} 
+            curScore={this.state.curScore}
           />
         ))}
       </Wrapper>

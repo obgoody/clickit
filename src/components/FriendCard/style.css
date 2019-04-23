@@ -33,7 +33,7 @@
   margin-top: 18px;
 }
 
-.card > .remove {
+.card > .select {
   color: #ff1744;
   font-size: 48px;
   position: absolute;
@@ -42,6 +42,6 @@
   cursor: pointer;
 }
 
-.card > .remove:hover {
+.card > .select:hover {
   color: #d50000;
 }

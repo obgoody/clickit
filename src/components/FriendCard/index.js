@@ -19,17 +19,13 @@ function FriendCard(props) {
             <strong>Location:</strong> {props.location}
           </li>
         </ul>
-      </div>
-      {/* <span onClick={() => props.removeFriend(props.id)} className="remove"> */}
-      
-        <span onClick={() => props.selectFriend(props.id)}
-          className={props.curScore === 0 ? "style_prevu_kit style_prevu_kit_ex" : "style_prevu_kit"}
-        >
-          <img alt={props.friends} src={props.friends} />
+
+        </div>
+      <span onClick={() => props.selectFriend(props.id)} className="select">
+        𝘅
       </span>
-      
     </div>
-      );
-    }
-    
-    export default FriendCard;
+        
+        )};
+
+        export default FriendCard;
